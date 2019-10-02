@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {AppLoading} from "expo";
-import {StyleSheet, Text, View, Button} from "react-native";
+import {StyleSheet, Text, View, Button, Dimensions} from "react-native";
 import {TopBar} from "./Components/TopBar";
 import * as Font from "expo-font";
 import {Ionicons} from "@expo/vector-icons";
@@ -8,6 +8,9 @@ import SearchBar from "./Components/Searchbar";
 import FooterTabs from "./Components/Footer";
 import {Provider} from "mobx-react";
 import {Store} from "./Lib/Store/RootStore";
+import ButtonIcon from "./Components/Button";
+import {Header, Content} from "native-base";
+import MainContainer from "./Components/MainContainer";
 
 interface AppState {
   isReady: boolean;
@@ -30,11 +33,11 @@ export default class App extends Component<{}, AppState> {
     if (!this.state.isReady) {
       return <AppLoading />;
     }
+
     return (
       <Provider store={Store}>
         <View style={styles.container}>
-          <SearchBar />
-          <FooterTabs />
+          <MainContainer style={styles.container} />
         </View>
       </Provider>
     );
@@ -43,6 +46,10 @@ export default class App extends Component<{}, AppState> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    borderColor: "green"
+  },
+  main: {
+    height: Dimensions.get("window").height
   }
 });

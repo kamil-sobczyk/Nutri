@@ -1,11 +1,22 @@
-import { action, observable } from 'mobx';
+import {action, observable} from "mobx";
+import {ScreenController} from "./Stores/ScreenController";
 
-class ObservableStore {
-  @observable property = '';
+export class ObservableStore {
+  screenController: ScreenController;
 
-  @action setProperty(newProperty: string) {
-    this.property = newProperty;
+  constructor() {
+    this.screenController = new ScreenController(this);
+  }
+
+  @observable text = "helloo";
+
+  @action setText(value: string): void {
+    this.text = value;
   }
 }
 
 export const Store = new ObservableStore();
+
+export interface StoreProps {
+  store: ObservableStore;
+}
