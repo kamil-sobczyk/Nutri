@@ -14,11 +14,11 @@ import {
   Right
 } from "native-base";
 import {StyleSheet} from "react-native";
-import FooterTabs from "./Footer";
+import FooterTabs from "../Footer";
 
 @inject("store")
 @observer
-export default class TopHeader extends Component<any, any> {
+export default class TopHeaderMain extends Component<any, any> {
   render() {
     return (
       <Header>
@@ -28,7 +28,7 @@ export default class TopHeader extends Component<any, any> {
           </Button>
         </Left>
         <Body>
-          <Title>Header</Title>
+          <Title>Nutri</Title>
         </Body>
         <Right />
       </Header>

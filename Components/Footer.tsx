@@ -13,17 +13,34 @@ import {observer, inject} from "mobx-react";
 import {StoreProps} from "../Lib/Store/RootStore";
 import {observable} from "mobx";
 import {bool} from "prop-types";
-import {StyleSheet} from "react-native";
+import {StyleSheet, AlertAndroid, Alert} from "react-native";
 import {FooterSingleTab} from "../Lib/Store/Stores/ScreenController";
 
 @inject("store")
 @observer
-export default class FooterTabs extends Component<any, any> {
+export default class FooterTabs extends Component<StoreProps, any> {
   private tabs: FooterSingleTab[] = this.props.store.screenController
     .footerTabs;
 
   private onTabPress = (index: number) => {
     this.setActiveTab(index);
+    Alert.alert(
+      `Bang, bang!!!`,
+      `Tab number ${index + 1} clicked!`,
+      [
+        {
+          text: "Ask me later",
+          onPress: () => console.log("Ask me later pressed")
+        },
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        {text: "OK", onPress: () => console.log("Ok Pressed")}
+      ],
+      {cancelable: false}
+    );
   };
 
   private setActiveTab = (index: number) => {

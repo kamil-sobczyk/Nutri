@@ -9,7 +9,7 @@ import FooterTabs from "./Components/Footer";
 import {Provider} from "mobx-react";
 import {Store} from "./Lib/Store/RootStore";
 import ButtonIcon from "./Components/Button";
-import {Header, Content} from "native-base";
+import {Header, Content, Container} from "native-base";
 import MainContainer from "./Components/MainContainer";
 
 interface AppState {
@@ -36,9 +36,9 @@ export default class App extends Component<{}, AppState> {
 
     return (
       <Provider store={Store}>
-        <View style={styles.container}>
-          <MainContainer style={styles.container} />
-        </View>
+        <Container style={styles.container}>
+          <MainContainer />
+        </Container>
       </Provider>
     );
   }
@@ -48,8 +48,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     borderColor: "green"
-  },
-  main: {
-    height: Dimensions.get("window").height
   }
 });
