@@ -17,24 +17,7 @@ interface TopBarProps {
 }
 
 export class TopBar extends Component<TopBarProps, TopBarState> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isReady: false
-    };
-  }
-  async componentDidMount() {
-    await Font.loadAsync({
-      Roboto: require("../node_modules/native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("../node_modules/native-base/Fonts/Roboto_medium.ttf"),
-      ...Ionicons.font
-    });
-    this.setState({ isReady: true });
-  }
   render() {
-    if (!this.state.isReady) {
-      return <AppLoading />;
-    }
     return (
       <View style={styles.container}>
         <Button>

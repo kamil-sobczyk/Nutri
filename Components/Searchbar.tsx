@@ -24,6 +24,5 @@ export default class SearchBar extends Component {
 const styles = StyleSheet.create({
     container: {
       position: 'relative',
-      // top: '3%'
     },
   });
