@@ -14,12 +14,9 @@ interface AppState {
 }
 
 export default class App extends Component<{}, AppState> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isReady: false
-    };
-  }
+  state = {
+    isReady: false
+  };
 
   async componentDidMount() {
     await Font.loadAsync({
