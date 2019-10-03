@@ -18,7 +18,7 @@ import {FooterSingleTab} from "../Lib/Store/Stores/ScreenController";
 
 @inject("store")
 @observer
-export default class FooterTabs extends Component<StoreProps, any> {
+export default class FooterTabs extends Component<any, any> {
   private tabs: FooterSingleTab[] = this.props.store.screenController
     .footerTabs;
 

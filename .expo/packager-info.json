@@ -2,8 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 3645,
-  "expoServerNgrokUrl": "https://eq-kwm.anonymous.nutri.exp.direct",
-  "packagerNgrokUrl": "https://packager.eq-kwm.anonymous.nutri.exp.direct",
-  "ngrokPid": 3790
+  "packagerPid": 8070,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
