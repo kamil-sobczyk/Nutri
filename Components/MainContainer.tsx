@@ -19,11 +19,17 @@ import FooterTabs from "./Footer";
 import TopHeaderMain from "./Headers/TopHeaderMain";
 import {CounterBar} from "./CounterBar";
 import {Col, Row, Grid} from "react-native-easy-grid";
+import SearchBar from "./Searchbar";
 
 @inject("store")
 @observer
 export default class MainContainer extends Component<any, any> {
+  componentDidMount = () => {
+    this.props.store.apiClient.getInfo();
+  };
   render() {
+    console.log("this.props.store.apiClient.info");
+    console.log(this.props.store.apiClient.info);
     return (
       <Container style={styles.container}>
         <TopHeaderMain />
@@ -33,11 +39,15 @@ export default class MainContainer extends Component<any, any> {
               <CounterBar />
             </View>
           </Row>
+
           <Row size={5} style={styles.contentRow}>
             <Text>{this.props.store.text}</Text>
+            <Text>{JSON.stringify(this.props.store.apiClient.info)}</Text>
             <DatePicker />
           </Row>
+          <SearchBar />
         </Grid>
+
         <FooterTabs />
       </Container>
     );
@@ -58,12 +68,12 @@ const styles = StyleSheet.create({
     zIndex: 0
   },
   counterRow: {
-    backgroundColor: "orange",
+    backgroundColor: "grey",
     height: 200,
     width: "100%",
-    borderBottomLeftRadius: 750,
-    borderBottomRightRadius: 750,
-    zIndex: 100
+    // borderBottomLeftRadius: 350,
+    // borderBottomRightRadius: 350,
+    zIndex: 1
   },
   contentRow: {
     backgroundColor: "lightgrey"

@@ -14,7 +14,7 @@ import {StoreProps} from "../Lib/Store/RootStore";
 import {observable} from "mobx";
 import {bool} from "prop-types";
 import {StyleSheet, AlertAndroid, Alert} from "react-native";
-import {FooterSingleTab} from "../Lib/Store/Stores/ScreenController";
+import {FooterSingleTab} from "../Lib/Store/Stores/ScreenManager";
 
 @inject("store")
 @observer

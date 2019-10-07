@@ -4,6 +4,7 @@ import {AppLoading} from "expo";
 import {Container, Button, Text} from "native-base";
 import * as Font from "expo-font";
 import {Ionicons} from "@expo/vector-icons";
+import {inject, observer} from "mobx-react";
 
 interface CounterBarProps {
   style?: {
@@ -12,11 +13,18 @@ interface CounterBarProps {
   };
 }
 
+@inject("store")
+@observer
 export class CounterBar extends Component<any> {
+  componentDidMount = () => {
+    console.log(this.props.store.apiClient.info);
+  };
   render() {
     return (
       <View style={styles.container}>
-        <Text>Dupa</Text>
+        <Button rounded light style={styles.counter}>
+          <Text>66%</Text>
+        </Button>
       </View>
     );
   }
@@ -26,5 +34,9 @@ const styles = StyleSheet.create({
   container: {
     position: "relative",
     top: 0
+  },
+  counter: {
+    alignSelf: "center",
+    marginTop: 30
   }
 });
