@@ -33,5 +33,5 @@
     "typescript": "^3.4.5"
   },
   "private": true,
-  "proxy": "P2pOJDqHFBScOFuPx26zBUZVVixaaXoUIabeNSma@api.nal.usda.gov/"
+  "proxy": "https://trackapi.nutritionix.com/v2/"
 }

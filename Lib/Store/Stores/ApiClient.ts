@@ -2,7 +2,7 @@ import {Store, StoreProps} from "../RootStore";
 import {ObservableStore} from "../RootStore";
 import {observable, action} from "mobx";
 import axios from "axios";
-import {apiKey} from "../../config";
+import {apiKey, appID} from "../../config";
 import {createObservableArray} from "mobx/lib/internal";
 
 console.log(apiKey);
@@ -12,36 +12,34 @@ export class ApiClient {
   constructor(store: ObservableStore) {
     this.store = store;
   }
-  private headers = {"Content-Type": "application/json"};
-  private testUrl =
-    "https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=P2pOJDqHFBScOFuPx26zBUZVVixaaXoUIabeNSma&location=Denver+CO";
-  //   private url = api;
+  private headers = {
+    "x-app-id": appID,
+    "x-app-key": apiKey
+  };
   info = "";
-  private testQuery = "apple";
+  private testQuery = "pork";
   private maxResults = 1;
   private offset = 0;
   private format = "format=json";
+  private baseURL = "https://trackapi.nutritionix.com/v2/search/instant/";
 
-  private testURL2 = `http://api.nal.usda.gov/fdc/v1/search?${this.format}&q=${this.testQuery}&max=${this.maxResults}&offset=${this.offset}&${apiKey}`;
-  // private testURL2 = `http://api.nal.usda.gov/ndb/search/?format=json&q=whiskey&max=50&offset=0&api_key=P2pOJDqHFBScOFuPx26zBUZVVixaaXoUIabeNSma`;
+  private testURL = `${this.baseURL}?query=${this.testQuery}`;
 
   getInfo = async (): Promise<any> =>
     await axios({
       method: "get",
-      url: this.testURL2,
+      url: this.testURL,
       headers: this.headers
-    }).then(text => {
-      console.log(text.data);
-      this.info = text as any;
+    }).then(res => {
+      console.log(res.data);
     });
 
   // axios
-  //   .get(this.testURL2, {params: {generalSearchInput: "raw +broccoli"}
-  // .headers})
+  //   .get(this.testURL)
 
   //   .then(function(response) {
   //     console.log("response");
-  //     console.log(response);
+  //     console.log(response.data);
   //     this.info = response;
   //   })
   //   .catch(function(error) {
