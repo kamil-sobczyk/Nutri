@@ -24,7 +24,7 @@ export default class TopHeaderMain extends Component<any, any> {
       <Header>
         <Left>
           <Button transparent>
-            <Icon name='menu' />
+            <Icon name="menu" />
           </Button>
         </Left>
         <Body>

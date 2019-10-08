@@ -3,7 +3,7 @@ import {ScreenManager} from "./Stores/ScreenManager";
 import {DataManager} from "./Stores/DataManager";
 import {ApiClient} from "./Stores/ApiClient";
 
-export class ObservableStore {
+export class Store {
   screenController: ScreenManager;
   dataManager: DataManager;
   apiClient: ApiClient;
@@ -21,8 +21,8 @@ export class ObservableStore {
   }
 }
 
-export const Store = new ObservableStore();
+export const store = new Store();
 
 export interface StoreProps {
-  store: ObservableStore;
+  store: Store;
 }

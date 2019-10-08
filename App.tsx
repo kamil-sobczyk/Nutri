@@ -7,7 +7,7 @@ import {Ionicons} from "@expo/vector-icons";
 import SearchBar from "./Components/Searchbar";
 import FooterTabs from "./Components/Footer";
 import {Provider} from "mobx-react";
-import {Store} from "./Lib/Store/RootStore";
+import {store} from "./Lib/Store/RootStore";
 import ButtonIcon from "./Components/Button";
 import {Header, Content, Container} from "native-base";
 import MainContainer from "./Components/MainContainer";
@@ -35,7 +35,7 @@ export default class App extends Component<{}, AppState> {
     }
 
     return (
-      <Provider store={Store}>
+      <Provider store={store}>
         <Container style={styles.container}>
           <MainContainer />
         </Container>

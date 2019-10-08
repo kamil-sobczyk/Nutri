@@ -1,5 +1,5 @@
 import {Store, StoreProps} from "../RootStore";
-import {ObservableStore} from "../RootStore";
+import {store} from "../RootStore";
 
 interface Meal {
   date: string;
@@ -11,8 +11,8 @@ interface UserData {
 }
 
 export class DataManager {
-  store: ObservableStore;
-  constructor(store: ObservableStore) {
+  store: Store;
+  constructor(store: Store) {
     this.store = store;
   }
 

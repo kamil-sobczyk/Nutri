@@ -24,23 +24,25 @@ export default class FooterTabs extends Component<any, any> {
 
   private onTabPress = (index: number) => {
     this.setActiveTab(index);
-    Alert.alert(
-      `Bang, bang!!!`,
-      `Tab number ${index + 1} clicked!`,
-      [
-        {
-          text: "Ask me later",
-          onPress: () => console.log("Ask me later pressed")
-        },
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        },
-        {text: "OK", onPress: () => console.log("Ok Pressed")}
-      ],
-      {cancelable: false}
-    );
+    this.props.store.apiClient.getInfo();
+    this.props.update();
+    // Alert.alert(
+    //   `Bang, bang!!!`,
+    //   `Tab number ${index + 1} clicked!`,
+    //   [
+    //     {
+    //       text: "Ask me later",
+    //       onPress: () => console.log("Ask me later pressed")
+    //     },
+    //     {
+    //       text: "Cancel",
+    //       onPress: () => console.log("Cancel Pressed"),
+    //       style: "cancel"
+    //     },
+    //     {text: "OK", onPress: () => console.log("Ok Pressed")}
+    //   ],
+    //   {cancelable: false}
+    // );
   };
 
   private setActiveTab = (index: number) => {

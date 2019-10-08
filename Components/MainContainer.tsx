@@ -26,29 +26,39 @@ import SearchBar from "./Searchbar";
 export default class MainContainer extends Component<any, any> {
   componentDidMount = () => {
     this.props.store.apiClient.getInfo();
+    // this.props.store.apiClient.getNutriens();
   };
+
+  update = () => this.forceUpdate();
   render() {
-    console.log("this.props.store.apiClient.info");
-    console.log(this.props.store.apiClient.info);
+    // console.log(JSON.stringify(this.props.store));
+    const {getSearchPhrase, getFoundData} = this.props.store.apiClient;
+    console.log(getFoundData());
     return (
       <Container style={styles.container}>
         <TopHeaderMain />
         <Grid>
-          <Row size={1} style={styles.counterBack}>
+          <Row size={0.5}>
+            <SearchBar update={this.update} />
+          </Row>
+          <Row size={2} style={styles.counterBack}>
             <View style={styles.counterRow}>
               <CounterBar />
             </View>
           </Row>
-
           <Row size={5} style={styles.contentRow}>
-            <Text>{this.props.store.text}</Text>
-            <Text>{JSON.stringify(this.props.store.apiClient.info)}</Text>
-            <DatePicker />
+            <Text>{getSearchPhrase()}</Text>
+            {getFoundData() &&
+              getFoundData().map(item => (
+                <Button key={item.food_name} style={styles.foodButton}>
+                  <Text>{item.food_name}</Text>
+                </Button>
+              ))}
+            {/*<
+            DatePicker />*/}
           </Row>
-          <SearchBar />
         </Grid>
-
-        <FooterTabs />
+        <FooterTabs update={this.update} />
       </Container>
     );
   }
@@ -63,12 +73,12 @@ const styles = StyleSheet.create({
     padding: 15
   },
   counterBack: {
-    backgroundColor: "lightgrey",
+    backgroundColor: "blue",
     width: "100%",
     zIndex: 0
   },
   counterRow: {
-    backgroundColor: "grey",
+    backgroundColor: "blue",
     height: 200,
     width: "100%",
     // borderBottomLeftRadius: 350,
@@ -77,5 +87,8 @@ const styles = StyleSheet.create({
   },
   contentRow: {
     backgroundColor: "lightgrey"
+  },
+  foodButton: {
+    flexDirection: "column"
   }
 });

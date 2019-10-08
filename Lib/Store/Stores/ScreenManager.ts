@@ -1,5 +1,5 @@
 import {Store, StoreProps} from "../RootStore";
-import {ObservableStore} from "../RootStore";
+import {store} from "../RootStore";
 import {observable, action} from "mobx";
 
 interface HeaderState {
@@ -15,8 +15,8 @@ export interface FooterSingleTab {
 }
 
 export class ScreenManager {
-  store: ObservableStore;
-  constructor(store: ObservableStore) {
+  store: Store;
+  constructor(store: Store) {
     this.store = store;
   }
 

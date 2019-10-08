@@ -5,6 +5,7 @@ import {Container, Button, Text} from "native-base";
 import * as Font from "expo-font";
 import {Ionicons} from "@expo/vector-icons";
 import {inject, observer} from "mobx-react";
+import SearchBar from "./Searchbar";
 
 interface CounterBarProps {
   style?: {
@@ -16,9 +17,6 @@ interface CounterBarProps {
 @inject("store")
 @observer
 export class CounterBar extends Component<any> {
-  componentDidMount = () => {
-    console.log(this.props.store.apiClient.info);
-  };
   render() {
     return (
       <View style={styles.container}>
@@ -37,6 +35,6 @@ const styles = StyleSheet.create({
   },
   counter: {
     alignSelf: "center",
-    marginTop: 30
+    marginTop: 20
   }
 });
