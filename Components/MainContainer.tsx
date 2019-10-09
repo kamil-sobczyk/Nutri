@@ -20,20 +20,18 @@ import TopHeaderMain from "./Headers/TopHeaderMain";
 import {CounterBar} from "./CounterBar";
 import {Col, Row, Grid} from "react-native-easy-grid";
 import SearchBar from "./Searchbar";
+import ItemCard from "./ItemCard";
 
 @inject("store")
 @observer
 export default class MainContainer extends Component<any, any> {
   componentDidMount = () => {
-    this.props.store.apiClient.getInfo();
-    // this.props.store.apiClient.getNutriens();
+    this.props.store.apiClient.getSearchData();
   };
 
   update = () => this.forceUpdate();
   render() {
-    // console.log(JSON.stringify(this.props.store));
-    const {getSearchPhrase, getFoundData} = this.props.store.apiClient;
-    console.log(getFoundData());
+    const {getSearchPhrase, getItemData} = this.props.store.apiClient;
     return (
       <Container style={styles.container}>
         <TopHeaderMain />
@@ -48,12 +46,8 @@ export default class MainContainer extends Component<any, any> {
           </Row>
           <Row size={5} style={styles.contentRow}>
             <Text>{getSearchPhrase()}</Text>
-            {getFoundData() &&
-              getFoundData().map(item => (
-                <Button key={item.food_name} style={styles.foodButton}>
-                  <Text>{item.food_name}</Text>
-                </Button>
-              ))}
+            <ItemCard />
+
             {/*<
             DatePicker />*/}
           </Row>
